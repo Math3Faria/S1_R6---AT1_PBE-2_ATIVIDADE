@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import { initializeDatabase } from './database/connection.database';
-import router from './routes/routes.js';
+import router from './routes/routes';
 
 
 const app = express();
