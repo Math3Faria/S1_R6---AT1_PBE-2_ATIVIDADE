@@ -74,15 +74,17 @@ export async function initializeDatabase(): Promise<void> {
                 );
             `);
 
-        await tempConnection.query(`
+     await tempConnection.query(`
                 CREATE TABLE IF NOT EXISTS produtos (
                     id INT AUTO_INCREMENT PRIMARY KEY,
                     nomeProd VARCHAR(150) NOT NULL,
                     valor DECIMAL(10, 2) NOT NULL,
+                    imagem_url VARCHAR(255) DEFAULT NULL,
                     idCategoria INT NOT NULL,
                     FOREIGN KEY (idCategoria) REFERENCES categorias(id) ON DELETE CASCADE
                 );
             `);
+
 
         await tempConnection.query(`
                 CREATE TABLE IF NOT EXISTS vendedores (
