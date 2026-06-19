@@ -20,7 +20,10 @@ export class ProdutoController {
     criar = async (req: Request, res: Response) => {
         try {
             const { nomeProd, valor, idCategoria } = req.body;
-            const novo = await this._service.criar(nomeProd, valor, idCategoria);
+            
+            const imagem_url = req.file ? req.file.filename : null;
+
+            const novo = await this._service.criar(nomeProd, valor, idCategoria, imagem_url);
             res.status(201).json({ novo })
         } catch (error: unknown) {
             console.error(error)
@@ -35,7 +38,9 @@ export class ProdutoController {
         try {
             const { nomeProd, valor, idCategoria } = req.body;
             const id = Number(req.query.id)
-            const alterado = await this._service.editar(id, nomeProd, valor, idCategoria);
+            const imagem_url = req.file ? req.file.filename : undefined;
+
+            const alterado = await this._service.editar(id, nomeProd, valor, idCategoria, imagem_url);
             res.status(200).json({ alterado })
         } catch (error: unknown) {
             console.error(error)

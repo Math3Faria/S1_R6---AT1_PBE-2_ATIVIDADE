@@ -8,13 +8,13 @@ export class ProdutoService {
         return await this._repository.findAll();
     }
 
-    async criar(nomeProd: string, valor: number, idCategoria: number) {
-        const produto = Produto.criar(nomeProd, valor, idCategoria);
+    async criar(nomeProd: string, valor: number, idCategoria: number, imagem_url: string | null = null) {
+        const produto = Produto.criar(nomeProd, valor, idCategoria, imagem_url);
         return await this._repository.create(produto);
     }
 
-    async editar(id: number, nomeProd: string, valor: number, idCategoria: number){
-        const produto = Produto.editar(id, nomeProd, valor, idCategoria)
+    async editar(id: number, nomeProd: string, valor: number, idCategoria: number, imagem_url?: string){
+        const produto = Produto.editar(id, nomeProd, valor, idCategoria, imagem_url)
         return await this._repository.update(id, produto)
     }
 
