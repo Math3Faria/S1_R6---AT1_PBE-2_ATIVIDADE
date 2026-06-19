@@ -4,7 +4,8 @@ import crypto from 'crypto';
 import fs from 'fs';
 import { Request } from "express";
 
-const baseUploadDir = path.resolve(__dirname, '..', '..', 'uploads');
+// CORREÇÃO: Removido um '..' para apontar para a raiz correta do seu projeto
+const baseUploadDir = path.resolve(__dirname, '..', 'uploads');
 
 const verificaDir = (dir: string): void => {
     // Verifica se o diretório não existe
@@ -51,22 +52,3 @@ const createMulter = ({ folder, allowedTypes, fileSize }: MulterOptions) => {
 }
 
 export default createMulter;
-
-
-
-// {
-//   "devDependencies": {
-//     "@types/express": "^5.0.6",
-//     "@types/multer": "^2.0.0",
-//     "@types/node": "^25.3.0",
-//     "nodemon": "^3.1.14",
-//     "ts-node": "^10.9.2",
-//     "typescript": "^5.9.3"
-//   },
-//   "dependencies": {
-//     "dotenv": "^17.3.1",
-//     "express": "^5.2.1",
-//     "multer": "^2.0.2",
-//     "mysql2": "^3.18.0"
-//   }
-// }
