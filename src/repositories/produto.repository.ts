@@ -11,11 +11,9 @@ export class ProdutoRepository {
         return rows;
     }
 
-    // Atualizado para incluir a coluna imagem_url no INSERT
     async create(dados: Omit<IProduto, 'id'>): Promise<ResultSetHeader> {
         const sql = 'INSERT INTO produtos (nomeProd, valor, idCategoria, imagem_url) VALUES (?,?,?,?);';
         
-        // Acessando as propriedades usando os Getters públicos da sua Model Produto
         const values = [dados.nomeProd, dados.valor, dados.idCategoria, dados.imagem_url || null];
         
         console.log('Dados enviados para o banco: ', values);
@@ -23,13 +21,10 @@ export class ProdutoRepository {
         return rows;
     }
 
-    // Atualizado para incluir a coluna imagem_url no UPDATE
     async update(id: number, dados: Omit<IProduto, 'id'>): Promise<ResultSetHeader> {
         let sql = 'UPDATE produtos SET nomeProd=?, valor=?, idCategoria=?';
         const values = [dados.nomeProd, dados.valor, dados.idCategoria];
 
-        // Se uma nova imagem foi enviada na edição, nós a atualizamos. 
-        // Caso contrário (undefined), a query mantém a imagem antiga intacta.
         if (dados.imagem_url !== undefined) {
             sql += ', imagem_url=?';
             values.push(dados.imagem_url);
