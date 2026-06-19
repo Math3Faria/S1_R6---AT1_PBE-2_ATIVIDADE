@@ -4,7 +4,7 @@ import crypto from 'crypto';
 import fs from 'fs';
 import { Request } from "express";
 
-const baseUploadDir = path.resolve(process.cwd(), 'uploads');
+const baseUploadDir = path.resolve(__dirname, '..', '..', 'uploads');
 
 const verificaDir = (dir: string): void => {
     // Verifica se o diretório não existe
