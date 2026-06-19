@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
-import path from 'path'; // 1. Importe o path
+import path from 'path'; 
 import { initializeDatabase } from './database/connection.database';
 import router from './routes/routes';
 
